@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Eco Score Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        label, input {
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        label {
+            width: 150px;
+        }
+        input[type="text"], input[type="number"] {
+            width: calc(100% - 160px);
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Predict the Ecoscore</h1>
+    <form method="POST">
+        <label for="product_name">Product Name:</label>
+        <input type="text" id="product_name" name="product_name"><br>
+
+        <label for="durability">Durability:</label>
+        <input type="number" id="durability" name="durability" step="1" min="0" max="10" required><br>
+
+        <label for="material">Material:</label>
+        <input type="number" id="material" name="material" step="1" min="0" max="10" required><br>
+
+        <label for="packing">Packing:</label>
+        <input type="number" id="packing" name="packing" step="1" min="0" max="10" required><br>
+
+        <label for="carbon_emissions">Carbon Emissions:</label>
+        <input type="number" id="carbon_emissions" name="carbon_emissions" step="1" min="0" max="10" required><br>
+
+        <label for="water_usage">Water Usage:</label>
+        <input type="number" id="water_usage" name="water_usage" step="1" min="0" max="10" required><br>
+
+        <label for="reusability">Reusability:</label>
+        <input type="number" id="reusability" name="reusability" step="1" min="0" max="10" required><br>
+
+        <label for="disposability">Disposability:</label>
+        <input type="number" id="disposability" name="disposability" step="1" min="0" max="10" required><br>
+
+        <label for="transportation">Transportation:</label>
+        <input type="number" id="transportation" name="transportation" step="1" min="0" max="10" required><br>
+
+        <label for="energy_usage">Energy Usage:</label>
+        <input type="number" id="energy_usage" name="energy_usage" step="1" min="0" max="10" required><br>
+
+        <label for="type_of_energy_usage">Type of Energy Usage:</label>
+        <input type="number" id="type_of_energy_usage" name="type_of_energy_usage" step="1" min="0" max="10" required><br><br>
+
+        <input type="submit" value="Predict Ecoscore">
+    </form>
+
+    {% if predicted_ecoscore is not none %}
+        <h2>Your product's predicted ecoscore: {{ predicted_ecoscore }}</h2>
+    {% endif %}
+</body>
+</html>
